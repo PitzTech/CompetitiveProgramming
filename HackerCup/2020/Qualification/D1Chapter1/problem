@@ -1,0 +1,29 @@
+Note: This problem shares similarities with Chapter 2. The solution to either chapter may help with solving the other, so please consider reading both first.
+You just landed yourself a gig as a delivery driver for a nationwide supply chain. You've been assigned a series of long-haul jobs, so it's time to get to work.
+For each job, you will be provided with a map of the relevant region, which includes NN cities (numbered from 1 to NN) and N-1N−1 two-way roads running amongst them. The cities are connected by roads in a single line, such that there's a road between each pair of consecutive cities. In other words, cities ii and jj are directly connected by a road if and only if |i - j| = 1∣i−j∣=1.
+You will begin in city 11 with a shipment of supplies to be delivered to city NN, and with a full gas tank having a capacity of MM gallons. You will then have two options at each point in time:
+Drive along a road from your current city to an adjacent one, using up 1 gallon of gas. You may not do this if your tank is empty, but it's fine if your tank becomes empty as a result.
+Fill your tank all the way back up to MM gallons of gas at a cost of C_iC 
+i
+​	  dollars, where ii is your current city. Note that the cost is independent of how much gas your tank had before refueling. You may not do this if city ii has no gas station (indicated with C_i = 0C 
+i
+​	 =0).
+Determine the minimum cost required to arrive at city NN, if it's possible at all.
+Input
+Input begins with an integer TT, the number of long-haul jobs you've been assigned. For each job there is first a line containing the space-separated integers NN and MM. Then, NN lines follow, the iith of which contains the single integer C_iC 
+i
+​	 .
+Output
+For the iith job, output a line containing "Case #i: " followed by a single integer, the minimum cost in dollars to get from city 1 to city NN, or -1−1 if it's impossible.
+Constraints
+1 \le T \le 851≤T≤85
+2 \le N \le 1,000,0002≤N≤1,000,000
+1 \le M \le N1≤M≤N
+0 \le C_i \le 1,000,000,0000≤C 
+i
+​	 ≤1,000,000,000
+The sum of NN across all jobs is at most 4,000,000.
+Sample Explanation
+In the first job, you will begin in city 1 with 3 gallons of gas. You cannot drive all the way to your destination (city 5) without refueling along the way, as that would require a total of 4 gallons of gas. The cheapest option is to drive to city 2, top up your tank for a cost of $20, and then drive through cities 3 and 4 before reaching city 5 with no more gas to spare.
+In the second job, your gas tank only has a capacity of 2 gallons. In this case, the cheapest strategy involves depleting all of your gas to drive to city 3, refueling there for $30, and then depleting all of your gas to reach city 5.
+In the third job, your gas tank only has a capacity of 1 gallon. No matter what you do, you will deplete all of your gas in the drive from city 3 to city 4, where there will be no way to refuel to reach city 5.

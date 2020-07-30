@@ -1,0 +1,1 @@
+      arvore[atual] = arvore[atual*2] + arvore[atual*2+1];
