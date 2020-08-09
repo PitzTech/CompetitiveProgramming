@@ -1,0 +1,1 @@
+cout << " \nsub " << atual << " ";
