@@ -12,8 +12,7 @@ bool comp(taresta a, taresta b){
 }
 
 int n, f, r;
-taresta arestar[MAXN];
-taresta arestaf[MAXN];
+taresta aresta[MAXN];
 int pai[MAXN], peso[MAXN];
 
 int find(int x){
@@ -28,7 +27,7 @@ void join(int a, int b){
     if(peso[a] < peso[b]) pai[a] = b;
     else if(peso[b] < peso[a]) pai[b] = a;
     else{
-        peso[a] = b;
+        pai[a] = b;
         peso[b]++;
     }
 }
@@ -41,25 +40,24 @@ int main(){
     freopen("out","w",stdout);
 
     cin >> n >> f >> r;
-    for(int i = 1; i <= f; i++)
-        cin >> arestaf[i].x >> arestaf[i].y >> arestaf[i].dis;
-    for(int i = 1; i <= r; i++)
-        cin >> arestar[i].x >> arestar[i].y >> arestar[i].dis;
+    for(int i = 0; i < f+r; i++){
+        int a,b;
+        cin >> a >> b >> aresta[i].dis;
+        aresta[i].x = --a;
+        aresta[i].y = --b;
+    }
+    for(int i = 0; i < n; i++) pai[i] = i;
 
-    for(int i = 1; i <= n; i++) pai[i] = i;
-
-    sort(arestaf+1, arestaf+f+1, comp);
-    sort(arestar+1, arestar+r+1, comp);
+    sort(aresta, aresta+f, comp);
+    sort(aresta+f, aresta+r+f, comp);
 
     int size = 0, soma = 0;
-    for(int i = 1; i <= f+r; i++){
-        if(i <= f && find(arestaf[i].x) != find(arestaf[i].y)){
-            join(arestaf[i].x, arestaf[i].y);
-            soma += arestaf[i].dis;
-            size++;
-        }else if(i >= r && find(arestar[i].x) != find(arestar[i].y)){
-            join(arestar[i].x, arestar[i].y);
-            soma += arestar[i].dis;
+    for(int i = 0; i < f+r; i++){
+        if(find(aresta[i].x) != find(aresta[i].y)){
+            join(aresta[i].x, aresta[i].y);
+            //cout << "aresta: " << aresta[i].x << " para " << aresta[i].y << endl;
+            soma += aresta[i].dis;
+            //cout << "soma: " << soma << " \n";
             size++;
         }
         if(size == n-1) break;
