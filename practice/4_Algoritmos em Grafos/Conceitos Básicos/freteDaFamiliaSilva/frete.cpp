@@ -13,7 +13,7 @@ typedef pair<int, aresta> estrada;
 
 int N, M;
 
-int conj[MAXN];
+int conju[MAXN];
 estrada v[MAXM];
 
 
@@ -22,7 +22,7 @@ int mst(){
 	sort(v,v+M);
 
 	int res = 0;
-	for(int i = 0; i < N; i++) conj[i] = i;
+	for(int i = 0; i < N; i++) conju[i] = i;
 	for(int i = 0; i < M; i++){
 		estrada e = v[i];
 		int p,q,u;
@@ -30,11 +30,11 @@ int mst(){
 		q = e.second.second;
 		u = e.first;
 
-		if(conj[p] == conj[q]) continue;
-		int c = conj[p];
+		if(conju[p] == conju[q]) continue;
+		int c = conju[p];
 		for(int j = 0; j < N; j++)
-			if(conj[j] == c) 
-				conj[j] = conj[q];
+			if(conju[j] == c) 
+				conju[j] = conju[q];
 
 		res += u;
 	}
@@ -42,6 +42,9 @@ int mst(){
 }
 
 int main(void){
+
+	freopen("in", "r", stdin);
+	freopen("out", "w", stdout);
 
 	scanf("%d %d",&N, &M);
 	for(int i = 0; i < M; i++){
