@@ -6,7 +6,7 @@ int main(){
     freopen("out","w",stdout);
 
     ios::sync_with_stdio(0);
-    cin.tie(NULL);
+    cin.tie(0);
 
     int t;
     cin >> t;
